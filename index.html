@@ -5,15 +5,19 @@
     <title>Cat Clicker</title>
 </head>
 <body>
-    <ul id="cat-list"></ul>
-    <div id="cat">
-
-        <h2 id="cat-name"></h2>
-        <div id="cat-count"></div>
-        <img id="cat-img" src="" alt="cute cat">
-
+    <ul id="cat-list" data-bind="foreach: cats">
+        <li><span data-bind="text: $data.name, click: $parent.selectCat"></span></li>        
+    </ul>
+    <div id="cat" data-bind="with: currentCat">
+        <h2 id="cat-name" data-bind="text: name"></h2>
+        <h3 id="cat-title" data-bind="text: title"></h3>
+        <div id="cat-count" data-bind="text: clicks"></div>
+        <img id="cat-img" src="" alt="cute cat" data-bind="attr: {src:src}, click: $parent.click">
     </div>
     <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="js/app.js"></script>
+    <script type="text/javascript">
+        ko.applyBindings(new ViewModel());
+    </script>
 </body>
 </html>
