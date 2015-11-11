@@ -21,8 +21,8 @@ var cats = [
 
 var ViewModel = function() {
 	var self = this;
-	self.currentCat = ko.observable(new Cat());
 	self.cats = ko.observableArray(cats);
+	self.currentCat = ko.observable(self.cats()[0]);
 	self.click = function() {
 		self.currentCat().clicks(self.currentCat().clicks()+1);
 	};
